@@ -43,25 +43,25 @@ namespace Frontegg.SDK.Build
             Target(
                 Pack,
                 DependsOn(Build),
-                () => Run("dotnet", $"pack src/aspnet/Frontegg.SDK.AspNet/Frontegg.SDK.AspNet.csproj -c Release -o {ArtifactsDir} --no-build")
+                () => Run("dotnet", $"pack ./src/aspnet/Frontegg.SDK.AspNet/Frontegg.SDK.AspNet.csproj -c Release -o {ArtifactsDir} --no-build")
                 );
             
             Target(Publish, DependsOn(Pack), () =>
             {
-                // var packagesToPush = Directory.GetFiles(ArtifactsDir, "*.nupkg", SearchOption.TopDirectoryOnly);
-                // Console.WriteLine($"Found packages to publish: {string.Join("; ", packagesToPush)}");
-                //
-                // var apiKey = Environment.GetEnvironmentVariable("FRONTEGG_API_KEY");
-                // if (string.IsNullOrWhiteSpace(apiKey))
-                // {
-                //     Console.WriteLine("Frontegg API Key not available. No packages will be pushed.");
-                //     return;
-                // }
-                // Console.WriteLine($"Feedz API Key ({apiKey.Substring(0,5)}) available. Pushing packages to Nuget...");
-                // foreach (var packageToPush in packagesToPush)
-                // {
-                //     Run("dotnet", $"nuget push {packageToPush} -k {apiKey} --skip-duplicate", noEcho: true);
-                // }
+                var packagesToPush = Directory.GetFiles(ArtifactsDir, "*.nupkg", SearchOption.TopDirectoryOnly);
+                Console.WriteLine($"Found packages to publish: {string.Join("; ", packagesToPush)}");
+                
+                var apiKey = Environment.GetEnvironmentVariable("FRONTEGG_API_KEY");
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    Console.WriteLine("Frontegg API Key not available. No packages will be pushed.");
+                    return;
+                }
+                Console.WriteLine($"Frontegg API Key ({apiKey.Substring(0,5)}) available. Pushing packages to Nuget...");
+                foreach (var packageToPush in packagesToPush)
+                {
+                    Run("dotnet", $"nuget push {packageToPush} -k {apiKey} -s https://api.nuget.org/v3/index.json --skip-duplicate", noEcho: true);
+                }
             });
             
             Target("default", DependsOn(Clean, Test));

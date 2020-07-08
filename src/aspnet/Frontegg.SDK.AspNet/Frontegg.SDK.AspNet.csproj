@@ -6,7 +6,6 @@
         <PackageId>Frontegg.SDK.AspNet</PackageId>
         <Authors>Guy Ludvig</Authors>
         <PackageProjectUrl>https://github.com/Frontegg/Frontegg.SDK</PackageProjectUrl>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/Frontegg/Frontegg.SDK/master/LICENSE</PackageLicenseUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
