@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F2763F30-F93B-4E97-BE8B-7ED6ECA7D48E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Core", "core\Frontegg.SDK.Core\Frontegg.SDK.Core.csproj", "{EC3677B6-40B2-40BF-A0AC-CE9130398227}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Audits", "Audits", "{28167B51-1920-477E-B3A4-C02A1009C91F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCore", "AspNetCore", "{A56BDCFA-B5F5-4FFD-A378-7D03EB3297AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet.Tests", "aspnet\Frontegg.SDK.AspNet.Tests\Frontegg.SDK.AspNet.Tests.csproj", "{FDE314DF-733C-458C-8911-AE170AF67E0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet.Example", "aspnet\Frontegg.SDK.AspNet.Example\Frontegg.SDK.AspNet.Example.csproj", "{649E5B2A-93ED-4573-A125-5403A394C03D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet", "aspnet\Frontegg.SDK.AspNet\Frontegg.SDK.AspNet.csproj", "{036B2DD3-BD77-42A4-8227-2919F2491F94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC3677B6-40B2-40BF-A0AC-CE9130398227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC3677B6-40B2-40BF-A0AC-CE9130398227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC3677B6-40B2-40BF-A0AC-CE9130398227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC3677B6-40B2-40BF-A0AC-CE9130398227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE314DF-733C-458C-8911-AE170AF67E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE314DF-733C-458C-8911-AE170AF67E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE314DF-733C-458C-8911-AE170AF67E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE314DF-733C-458C-8911-AE170AF67E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649E5B2A-93ED-4573-A125-5403A394C03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649E5B2A-93ED-4573-A125-5403A394C03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649E5B2A-93ED-4573-A125-5403A394C03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649E5B2A-93ED-4573-A125-5403A394C03D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036B2DD3-BD77-42A4-8227-2919F2491F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036B2DD3-BD77-42A4-8227-2919F2491F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036B2DD3-BD77-42A4-8227-2919F2491F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036B2DD3-BD77-42A4-8227-2919F2491F94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC3677B6-40B2-40BF-A0AC-CE9130398227} = {F2763F30-F93B-4E97-BE8B-7ED6ECA7D48E}
+		{FDE314DF-733C-458C-8911-AE170AF67E0C} = {A56BDCFA-B5F5-4FFD-A378-7D03EB3297AE}
+		{649E5B2A-93ED-4573-A125-5403A394C03D} = {A56BDCFA-B5F5-4FFD-A378-7D03EB3297AE}
+		{036B2DD3-BD77-42A4-8227-2919F2491F94} = {A56BDCFA-B5F5-4FFD-A378-7D03EB3297AE}
+	EndGlobalSection
+EndGlobal

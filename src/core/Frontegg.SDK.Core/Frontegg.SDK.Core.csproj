@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Frontegg.SDK.Core</AssemblyName>
+        <RootNamespace>Frontegg.SDK.Core</RootNamespace>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="4.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.5" />
+    </ItemGroup>
+
+</Project>

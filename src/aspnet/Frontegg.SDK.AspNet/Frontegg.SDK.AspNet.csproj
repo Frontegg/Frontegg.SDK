@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp3.1;netstandard2.0</TargetFrameworks>
+        <Description>Frontegg is a web platform where SaaS companies can set up their fully managed, scalable and brand aware - SaaS features and integrate them into their SaaS portals in up to 5 lines of code.</Description>
+        <PackageId>Frontegg.SDK.AspNet</PackageId>
+        <Authors>Guy Ludvig</Authors>
+        <PackageProjectUrl>https://github.com/Frontegg/Frontegg.SDK</PackageProjectUrl>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/Frontegg/Frontegg.SDK/master/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <Version>1.0.0</Version>
+        <PackageTags>frontegg;middleware;auditlog;identity;aspnetcore;http</PackageTags>
+        <NoWarn>$(NoWarn);NU5105;1701;1702;1705;1591</NoWarn>
+        <LangVersion>7.3</LangVersion>
+        <DebugType>full</DebugType>
+        <PackageIconUrl>https://s.gravatar.com/avatar/330fa483c91b0a9e259e80a2783039c2</PackageIconUrl>
+        <PackageReleaseNotes>See https://github.com/Frontegg/Frontegg.SDK/releases for release notes.</PackageReleaseNotes>
+        <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="4.0.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' != 'netcoreapp3.1'">
+        <PackageReference Include="Microsoft.AspNetCore" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="2.1.0" />
+        <PackageReference Include="System.Text.Json" Version="4.7.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    </ItemGroup>
+</Project>

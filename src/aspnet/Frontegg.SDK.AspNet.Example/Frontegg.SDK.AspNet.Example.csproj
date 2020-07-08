@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Frontegg.SDK.AspNet\Frontegg.SDK.AspNet.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="4.0.0" />
+    </ItemGroup>
+
+
+</Project>
