@@ -1,4 +1,4 @@
-# Frontegg.SDK.AptNet
+# Frontegg.SDK.AspNet
 
 <img src="https://fronteggstuff.blob.core.windows.net/frongegg-logos/logo-transparent.png" alt="Frontegg">
 
