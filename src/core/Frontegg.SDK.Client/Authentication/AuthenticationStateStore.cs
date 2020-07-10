@@ -6,12 +6,14 @@ namespace Frontegg.SDK.Client.Authentication
 {
     internal class AuthenticationStateStore : IAuthenticationStateStore
     {
+        private static readonly FronteggAuthenticationResult InitialState =
+            FronteggAuthenticationResult.FailedResult("Client has not been authenticated yet.");
         private readonly IAuthenticator _authenticator;
         private readonly IFronteggCredentials _credentials;
         private bool _isInitialized = false;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
         private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
-        private FronteggAuthenticationResult _authenticationState = FronteggAuthenticationResult.FailedResult("Client has not been authenticated yet.");
+        private FronteggAuthenticationResult _authenticationState = InitialState;
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private CancellationToken _cancellationToken;
         private readonly Task _updateProcess;
@@ -50,25 +52,26 @@ namespace Frontegg.SDK.Client.Authentication
                 {
                     if (!_isInitialized)
                     {
+                        var result = InitialState;
+                        
                         for (var i = 0; i < 3; i++)
                         {
-                            var result = await GetAuthenticationResult().ConfigureAwait(false);
-                            if (_authenticationState.IsAuthenticated)
+                            result = await GetAuthenticationResult().ConfigureAwait(false);
+                            if (result.IsAuthenticated)
                             {
                                 UpdateState(result);
                                 _updateProcess.Start();
-                                break;
+                                _isInitialized = true;
+                                return;
                             }
                             var nextRefresh = GetNextRefreshTimeSpan(i);
                             await Task.Delay(nextRefresh, _cancellationToken).ConfigureAwait(false);
                         }
 
-                        if (!_authenticationState.IsAuthenticated)
+                        if (!result.IsAuthenticated)
                         {
                             throw new FailedAuthorisationsException($"Failed to authenticate clientId: {_credentials.ClientId}");
                         }
-                        
-                        _isInitialized = true;
                     }
                 }
                 finally

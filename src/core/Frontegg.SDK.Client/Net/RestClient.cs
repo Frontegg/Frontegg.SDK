@@ -1,24 +1,39 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Frontegg.SDK.Client.Authentication;
+using Frontegg.SDK.Client.Infa;
 
 namespace Frontegg.SDK.Client.Net
 {
-    public class RestClient : Infa.IRestClient
+    internal class RestClient : IRestClient
     {
+        private readonly IAuthenticationStateStore _authenticationStateStore;
         private readonly Func<HttpMessageHandler> _handlerCreator;
 
-        public RestClient(Func<HttpMessageHandler> handlerCreator)
+        public RestClient(IAuthenticationStateStore authenticationStateStore,
+            Func<HttpMessageHandler> handlerCreator)
         {
+            _authenticationStateStore = authenticationStateStore;
             _handlerCreator = handlerCreator;
         }
         
         // change HttpRequestMessage to something ours
         public async Task<HttpResponseMessage> Send(HttpRequestMessage requestMessage, CancellationToken cancellationToken)
         {
-            // TimeSpan.FromSeconds(30) change this to configuration
+            var latestState = await _authenticationStateStore.GetLatestState()
+                .ConfigureAwait(false);
+
+            if (!latestState.IsAuthenticated)
+            {
+                throw new FronteggHttpException(HttpStatusCode.Forbidden, "Frontegg client is not authenticated");
+            }
+            
+            requestMessage.AddAuthorizationHeader(latestState.Token);
+            
+            // TODO set timeout from configuration.
             var cancellationTokenForRequest = GetCancellationTokenForRequest(TimeSpan.FromSeconds(30) , cancellationToken);
 
             using (requestMessage)
@@ -35,7 +50,7 @@ namespace Frontegg.SDK.Client.Net
             }
         }
         
-        static CancellationToken GetCancellationTokenForRequest(TimeSpan timeout, CancellationToken cancellationToken)
+        private static CancellationToken GetCancellationTokenForRequest(TimeSpan timeout, CancellationToken cancellationToken)
         {
             var cancellationTokenForRequest = cancellationToken;
 

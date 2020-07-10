@@ -16,6 +16,20 @@ namespace Frontegg.SDK.Client.Net
 
             public string Value { get; set; }
         }
+
+        public static UrlBuilder AddPath(this UrlBuilder target, string path)
+        {
+            if (target.Path.EndsWith("/") || path.StartsWith("/"))
+            {
+                target.Path += path;
+            }
+            else
+            {
+                target.Path += $"/{path}";
+            }
+            
+            return target;
+        }
         
         public static UrlBuilder ToUrlBuilder(this string url)
         {

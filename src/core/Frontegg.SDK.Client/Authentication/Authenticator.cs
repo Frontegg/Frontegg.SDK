@@ -17,6 +17,11 @@ namespace Frontegg.SDK.Client.Authentication
             _authenticationUrl = new Uri(authenticationUrl);
         }
 
+        public Authenticator(Uri uri)
+        {
+            _authenticationUrl = uri;
+        }
+        
         public async Task<FronteggAuthenticationResult> Authenticate(IFronteggCredentials fronteggCredentials)
         {
             var json = $@"{{""clientId"": ""{fronteggCredentials.ClientId}"", ""secret"": ""{fronteggCredentials.ApiKey}""}}";
