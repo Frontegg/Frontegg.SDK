@@ -1,4 +1,4 @@
-# Frontegg.SDK.AptNet
+# Frontegg.SDK.AspNet
 
 <img src="https://fronteggstuff.blob.core.windows.net/frongegg-logos/logo-transparent.png" alt="Frontegg">
 
@@ -15,40 +15,39 @@ To use the Frontegg's middleware use the frontegg middleware from the `Frontegg.
 
 ```c#
 public class Startup
+{
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+        // When using AspNetCore DI, frontegg allows to inject the class to extract
+        // the userId and tenatId.
+        services.TryAddSingleton<IFronteggProxyInfoExtractor, MyFronteggProxyExtractor>();
+        services.AddFrontegg();
+     }
+
+      // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+      {
+        if (env.IsDevelopment())
         {
-            Configuration = configuration;
+            app.UseDeveloperExceptionPage();
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();
-            // When using AspNetCore DI, frontegg allows to inject the class to extract
-            // the userId and tenatId.
-            services.TryAddSingleton<IFronteggProxyInfoExtractor, MyFronteggProxyExtractor>();
-            services.AddFrontegg();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting();
+        app.UseRouting();
             
-            // When using the DI to inject the `IFronteggProxyInfoExtractor`,
-            // you must indicate using generics the class injected.
-            app.UseFrontegg<MyFronteggProxyExtractor>();
-
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-        }
+        // When using the DI to inject the `IFronteggProxyInfoExtractor`,
+        // you must indicate using generics the class injected.
+        app.UseFrontegg<MyFronteggProxyExtractor>();
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+      }
     }
     
     // create your own class that implements `IFronteggProxyInfoExtractor` to extract 
@@ -64,6 +63,7 @@ public class Startup
             });
         }
     }
+}
 ```
 
 ## Configuration
@@ -71,11 +71,11 @@ Frontegg middleware requires `ApiKey` and `ClientId` which is given to you in [F
 
 ```c#
 services.AddFrontegg(options =>
-            {
-                options.ApiKey = "apiKey";
-                options.ClientId = "clientId";
-                options.ThrowOnMissingConfiguration = true;
-            });
+        {
+            options.ApiKey = "apiKey";
+            options.ClientId = "clientId";
+            options.ThrowOnMissingConfiguration = true;
+        });
 ```
 
 It is also possible to use `appsetting.json` to pass configuration variables like so:
@@ -99,16 +99,16 @@ Frontegg allows to pass `userId` and `tenatId` as configured in [Frontegg Portal
 When implementing `IFronteggProxyInfoExtractor` the result should be `FronteggTenantInfo` this will be passed into Frontegg http request
 ```c#
 public class MyFronteggProxyExtractor : IFronteggProxyInfoExtractor
+{
+    public Task<FronteggTenantInfo> Extract(HttpRequest request)
     {
-        public Task<FronteggTenantInfo> Extract(HttpRequest request)
+        return Task.FromResult(new FronteggTenantInfo()
         {
-            return Task.FromResult(new FronteggTenantInfo()
-            {
-                UserId = "userId",
-                TenantId = "tenantId"
-            });
-        }
+            UserId = "userId",
+            TenantId = "tenantId"
+        });
     }
+}
 ```
 Please note that in order for AspNetCore to resolve the implementation of `IFronteggProxyInfoExtractor` you must register like so:
 ```c#
