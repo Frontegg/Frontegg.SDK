@@ -1,4 +1,3 @@
-using System;
 using System.Net;
 using System.Threading.Tasks;
 using AutoFixture;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using NSubstitute;
 using Shouldly;
 using Xunit;
-using static Frontegg.SDK.AspNet.Tests.UnitTests.MockHelper;
+using static Frontegg.SDK.AspNet.Tests.TestsInfra.MockHelper;
 
 namespace Frontegg.SDK.AspNet.Tests.UnitTests
 {

@@ -35,7 +35,7 @@ namespace Frontegg.SDK.AspNet.Example
                     });
             });
             
-            services.TryAddSingleton<IFronteggProxyInfoExtractor, X>();
+            services.TryAddSingleton<IFronteggProxyInfoExtractor, MyFronteggProxyInfoExtractor>();
             
             services.AddFrontegg();
         }
@@ -52,13 +52,13 @@ namespace Frontegg.SDK.AspNet.Example
 
             app.UseRouting();
 
-            app.UseFrontegg<X>();
+            app.UseFrontegg<MyFronteggProxyInfoExtractor>();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 
-    public class X : IFronteggProxyInfoExtractor
+    public class MyFronteggProxyInfoExtractor : IFronteggProxyInfoExtractor
     {
         public Task<FronteggTenantInfo> Extract(HttpRequest request)
         {
