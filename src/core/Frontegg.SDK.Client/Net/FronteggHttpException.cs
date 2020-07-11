@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Runtime.Serialization;
 
-namespace Frontegg.SDK.Client
+namespace Frontegg.SDK.Client.Net
 {
     [Serializable]
     public class FronteggHttpException : Exception

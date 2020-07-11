@@ -11,12 +11,15 @@ namespace Frontegg.SDK.Client.Net
     internal class RestClient : IRestClient
     {
         private readonly IAuthenticationStateStore _authenticationStateStore;
+        private readonly TimeSpan _timeout;
         private readonly Func<HttpMessageHandler> _handlerCreator;
 
         public RestClient(IAuthenticationStateStore authenticationStateStore,
+            TimeSpan timeout,
             Func<HttpMessageHandler> handlerCreator)
         {
             _authenticationStateStore = authenticationStateStore;
+            _timeout = timeout;
             _handlerCreator = handlerCreator;
         }
         
@@ -33,8 +36,7 @@ namespace Frontegg.SDK.Client.Net
             
             requestMessage.AddAuthorizationHeader(latestState.Token);
             
-            // TODO set timeout from configuration.
-            var cancellationTokenForRequest = GetCancellationTokenForRequest(TimeSpan.FromSeconds(30) , cancellationToken);
+            var cancellationTokenForRequest = GetCancellationTokenForRequest(_timeout , cancellationToken);
 
             using (requestMessage)
             {

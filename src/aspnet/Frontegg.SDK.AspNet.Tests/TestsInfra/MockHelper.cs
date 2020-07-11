@@ -2,7 +2,7 @@ using AutoFixture;
 using AutoFixture.AutoNSubstitute;
 using NSubstitute;
 
-namespace Frontegg.SDK.AspNet.Tests.UnitTests
+namespace Frontegg.SDK.AspNet.Tests.TestsInfra
 {
     public static class MockHelper
     {

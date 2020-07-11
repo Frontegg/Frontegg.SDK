@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Frontegg.SDK.Client
+namespace Frontegg.SDK.Client.Audits
 {
     public class SortDirection : IEquatable<SortDirection>, IComparable<SortDirection>
     {

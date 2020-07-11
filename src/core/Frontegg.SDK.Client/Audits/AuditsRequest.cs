@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Frontegg.SDK.Client
+namespace Frontegg.SDK.Client.Audits
 {
     public class AuditsRequest
     {

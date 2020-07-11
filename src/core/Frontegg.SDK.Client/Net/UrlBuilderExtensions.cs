@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Frontegg.SDK.Client.Net
 {
@@ -17,6 +18,11 @@ namespace Frontegg.SDK.Client.Net
             public string Value { get; set; }
         }
 
+        public static UrlBuilder ToUrlBuilder(this Uri target)
+        {
+            return new UrlBuilder(target.OriginalString);
+        }
+        
         public static UrlBuilder AddPath(this UrlBuilder target, string path)
         {
             if (target.Path.EndsWith("/") || path.StartsWith("/"))
@@ -106,6 +112,11 @@ namespace Frontegg.SDK.Client.Net
         {
             builder.Protocol = secure ? "https" : "http";
             return builder;
+        }
+
+        public static Uri ToUri(this UrlBuilder target, UriKind uriKind = UriKind.RelativeOrAbsolute )
+        {
+            return new Uri(target.ToString(), uriKind);
         }
     }
 }

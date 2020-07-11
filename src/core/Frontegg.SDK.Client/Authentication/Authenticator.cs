@@ -17,12 +17,12 @@ namespace Frontegg.SDK.Client.Authentication
             _authenticationUrl = new Uri(authenticationUrl);
         }
 
-        public Authenticator(Uri uri)
+        public Authenticator(Uri apiUrl)
         {
-            _authenticationUrl = uri;
+            _authenticationUrl = apiUrl.ToUrlBuilder().WithPath(Constants.AuthorizationPath).ToUri();
         }
         
-        public async Task<FronteggAuthenticationResult> Authenticate(IFronteggCredentials fronteggCredentials)
+        public async Task<FronteggAuthenticationState> Authenticate(IFronteggCredentials fronteggCredentials)
         {
             var json = $@"{{""clientId"": ""{fronteggCredentials.ClientId}"", ""secret"": ""{fronteggCredentials.ApiKey}""}}";
 
@@ -46,11 +46,11 @@ namespace Frontegg.SDK.Client.Authentication
             }
             catch (Exception e)
             {
-                return FronteggAuthenticationResult.FailedResult(e.Message ?? "An error has occured during the authentication process.");
+                return FronteggAuthenticationState.FailedResult(e.Message ?? "An error has occured during the authentication process.");
             }
         }
 
-        private static async Task<FronteggAuthenticationResult> ProcessFailedResponse(HttpResponseMessage response)
+        private static async Task<FronteggAuthenticationState> ProcessFailedResponse(HttpResponseMessage response)
         {
             var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             
@@ -61,7 +61,7 @@ namespace Frontegg.SDK.Client.Authentication
                     {
                         PropertyNameCaseInsensitive = true
                     });
-                return FronteggAuthenticationResult.FailedResult($"{webResponse.Error}, {webResponse.Message}");
+                return FronteggAuthenticationState.FailedResult($"{webResponse.Error}, {webResponse.Message}");
             }
 
             var exceptionMessage =
@@ -70,7 +70,7 @@ namespace Frontegg.SDK.Client.Authentication
             throw new FailedAuthorisationsException(exceptionMessage);
         }
 
-        private static async Task<FronteggAuthenticationResult> ProcessSuccessfulResponse(HttpResponseMessage response)
+        private static async Task<FronteggAuthenticationState> ProcessSuccessfulResponse(HttpResponseMessage response)
         {
             var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var webResponse = JsonSerializer.Deserialize<FronteggSuccessfulAuthenticationResponse>(responseBody,
@@ -79,7 +79,7 @@ namespace Frontegg.SDK.Client.Authentication
                     PropertyNameCaseInsensitive = true
                 });
 
-            return new FronteggAuthenticationResult(webResponse.Token, webResponse.ExpiresIn);
+            return new FronteggAuthenticationState(webResponse.Token, webResponse.ExpiresIn);
         }
     }
 }

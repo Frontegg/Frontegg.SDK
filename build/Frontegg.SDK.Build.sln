@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Build", "Frontegg.SDK.Build.csproj", "{C25F4CDF-FF86-45F1-B5B2-262C4C694CF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Build", "Frontegg.SDK.Middleware.Build\Frontegg.SDK.Build.csproj", "{198B372D-30D7-4FAE-8238-0F1025057305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Client.Build", "Frontegg.SDK.Client.Build\Frontegg.SDK.Client.Build.csproj", "{D259148B-7350-4134-8B6B-14BA4DBC678C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C25F4CDF-FF86-45F1-B5B2-262C4C694CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C25F4CDF-FF86-45F1-B5B2-262C4C694CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C25F4CDF-FF86-45F1-B5B2-262C4C694CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C25F4CDF-FF86-45F1-B5B2-262C4C694CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{198B372D-30D7-4FAE-8238-0F1025057305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{198B372D-30D7-4FAE-8238-0F1025057305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{198B372D-30D7-4FAE-8238-0F1025057305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{198B372D-30D7-4FAE-8238-0F1025057305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D259148B-7350-4134-8B6B-14BA4DBC678C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D259148B-7350-4134-8B6B-14BA4DBC678C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D259148B-7350-4134-8B6B-14BA4DBC678C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D259148B-7350-4134-8B6B-14BA4DBC678C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-namespace Frontegg.SDK.Client
+namespace Frontegg.SDK.Client.Metadata
 {
     public interface IMetadataClient
     {

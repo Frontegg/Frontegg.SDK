@@ -4,6 +4,6 @@ namespace Frontegg.SDK.Client.Authentication
 {
     internal interface IAuthenticator
     {
-        Task<FronteggAuthenticationResult> Authenticate(IFronteggCredentials fronteggCredentials);
+        Task<FronteggAuthenticationState> Authenticate(IFronteggCredentials fronteggCredentials);
     }
 }

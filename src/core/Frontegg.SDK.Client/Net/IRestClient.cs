@@ -1,6 +1,4 @@
-using System.Threading.Tasks;
-
-namespace Frontegg.SDK.Client
+namespace Frontegg.SDK.Client.Net
 {
     // internal interface IRestClient
     // {

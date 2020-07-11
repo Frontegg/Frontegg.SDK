@@ -6,14 +6,14 @@ namespace Frontegg.SDK.Client.Authentication
 {
     internal class AuthenticationStateStore : IAuthenticationStateStore
     {
-        private static readonly FronteggAuthenticationResult InitialState =
-            FronteggAuthenticationResult.FailedResult("Client has not been authenticated yet.");
+        private static readonly FronteggAuthenticationState InitialState =
+            FronteggAuthenticationState.FailedResult("Client has not been authenticated yet.");
         private readonly IAuthenticator _authenticator;
         private readonly IFronteggCredentials _credentials;
         private bool _isInitialized = false;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
         private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
-        private FronteggAuthenticationResult _authenticationState = InitialState;
+        private FronteggAuthenticationState _authenticationState = InitialState;
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private CancellationToken _cancellationToken;
         private readonly Task _updateProcess;
@@ -28,14 +28,14 @@ namespace Frontegg.SDK.Client.Authentication
             _updateProcess = new Task(async () => await TokenUpdateProcess().ConfigureAwait(false), _cancellationToken, TaskCreationOptions.RunContinuationsAsynchronously) ;
         }
         
-        public async Task<FronteggAuthenticationResult> GetLatestState()
+        public async Task<FronteggAuthenticationState> GetLatestState()
         {
             await HandleFirstTime().ConfigureAwait(false);
             
             _lock.EnterReadLock();
             try
             {
-                return FronteggAuthenticationResult.CloneResult(_authenticationState);
+                return FronteggAuthenticationState.CloneResult(_authenticationState);
             }
             finally
             {
@@ -81,12 +81,12 @@ namespace Frontegg.SDK.Client.Authentication
             }
         }
         
-        private void UpdateState(FronteggAuthenticationResult authenticationResult)
+        private void UpdateState(FronteggAuthenticationState authenticationState)
         {
             _lock.EnterWriteLock();
             try
             {
-                _authenticationState = FronteggAuthenticationResult.CloneResult(authenticationResult);
+                _authenticationState = FronteggAuthenticationState.CloneResult(authenticationState);
 
             }
             finally
@@ -119,7 +119,7 @@ namespace Frontegg.SDK.Client.Authentication
             }
         }
 
-        private async Task<FronteggAuthenticationResult> GetAuthenticationResult()
+        private async Task<FronteggAuthenticationState> GetAuthenticationResult()
         {
             var result = await _authenticator.Authenticate(_credentials).ConfigureAwait(false);
             return result;
