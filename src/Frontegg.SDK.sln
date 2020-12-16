@@ -1,29 +1,38 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F2763F30-F93B-4E97-BE8B-7ED6ECA7D48E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Core", "core\Frontegg.SDK.Core\Frontegg.SDK.Core.csproj", "{EC3677B6-40B2-40BF-A0AC-CE9130398227}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.Core", "core\Frontegg.SDK.Core\Frontegg.SDK.Core.csproj", "{EC3677B6-40B2-40BF-A0AC-CE9130398227}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{28167B51-1920-477E-B3A4-C02A1009C91F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCore", "AspNetCore", "{A56BDCFA-B5F5-4FFD-A378-7D03EB3297AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet.Tests", "aspnet\Frontegg.SDK.AspNet.Tests\Frontegg.SDK.AspNet.Tests.csproj", "{FDE314DF-733C-458C-8911-AE170AF67E0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.AspNet.Tests", "aspnet\Frontegg.SDK.AspNet.Tests\Frontegg.SDK.AspNet.Tests.csproj", "{FDE314DF-733C-458C-8911-AE170AF67E0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet.Example", "aspnet\Frontegg.SDK.AspNet.Example\Frontegg.SDK.AspNet.Example.csproj", "{649E5B2A-93ED-4573-A125-5403A394C03D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.AspNet.Example", "aspnet\Frontegg.SDK.AspNet.Example\Frontegg.SDK.AspNet.Example.csproj", "{649E5B2A-93ED-4573-A125-5403A394C03D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet", "aspnet\Frontegg.SDK.AspNet\Frontegg.SDK.AspNet.csproj", "{036B2DD3-BD77-42A4-8227-2919F2491F94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.AspNet", "aspnet\Frontegg.SDK.AspNet\Frontegg.SDK.AspNet.csproj", "{036B2DD3-BD77-42A4-8227-2919F2491F94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{9828D744-2D6E-4F04-BC2D-AE7E6FB46112}"
-ProjectSection(SolutionItems) = preProject
-	..\README.md = ..\README.md
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Client", "core\Frontegg.SDK.Client\Frontegg.SDK.Client.csproj", "{EC281213-DD44-46A4-BCCC-4FD21799231A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.Client", "core\Frontegg.SDK.Client\Frontegg.SDK.Client.csproj", "{EC281213-DD44-46A4-BCCC-4FD21799231A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Client.Tests", "core\Frontegg.SDK.Client.Tests\Frontegg.SDK.Client.Tests.csproj", "{55E00CF3-A2AB-4665-A8B2-5C18E0F243F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.Client.Tests", "core\Frontegg.SDK.Client.Tests\Frontegg.SDK.Client.Tests.csproj", "{55E00CF3-A2AB-4665-A8B2-5C18E0F243F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.Client.Example", "core\Frontegg.SDK.Client.Example\Frontegg.SDK.Client.Example.csproj", "{14A0114E-DA52-4C7C-BF14-22CEBBCCF0E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.Client.Example", "core\Frontegg.SDK.Client.Example\Frontegg.SDK.Client.Example.csproj", "{14A0114E-DA52-4C7C-BF14-22CEBBCCF0E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNet.Mvc", "AspNet.Mvc", "{676CFE58-271C-4F0C-9DB1-7D14F27244A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontegg.SDK.AspNet.Owin.Example", "mvc\Frontegg.SDK.AspNet.Owin.Example\Frontegg.SDK.AspNet.Owin.Example.csproj", "{AC9BB244-328D-4E2F-A3E1-1DD107B3A3B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontegg.SDK.AspNet.Owin", "mvc\Frontegg.SDK.AspNet.Owin\Frontegg.SDK.AspNet.Owin.csproj", "{5D7E5A85-F5EE-4749-8773-95D2667BDEA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +68,17 @@ Global
 		{14A0114E-DA52-4C7C-BF14-22CEBBCCF0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A0114E-DA52-4C7C-BF14-22CEBBCCF0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14A0114E-DA52-4C7C-BF14-22CEBBCCF0E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9BB244-328D-4E2F-A3E1-1DD107B3A3B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9BB244-328D-4E2F-A3E1-1DD107B3A3B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9BB244-328D-4E2F-A3E1-1DD107B3A3B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9BB244-328D-4E2F-A3E1-1DD107B3A3B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7E5A85-F5EE-4749-8773-95D2667BDEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7E5A85-F5EE-4749-8773-95D2667BDEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7E5A85-F5EE-4749-8773-95D2667BDEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7E5A85-F5EE-4749-8773-95D2667BDEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EC3677B6-40B2-40BF-A0AC-CE9130398227} = {F2763F30-F93B-4E97-BE8B-7ED6ECA7D48E}
@@ -68,5 +88,10 @@ Global
 		{EC281213-DD44-46A4-BCCC-4FD21799231A} = {28167B51-1920-477E-B3A4-C02A1009C91F}
 		{55E00CF3-A2AB-4665-A8B2-5C18E0F243F5} = {28167B51-1920-477E-B3A4-C02A1009C91F}
 		{14A0114E-DA52-4C7C-BF14-22CEBBCCF0E6} = {28167B51-1920-477E-B3A4-C02A1009C91F}
+		{AC9BB244-328D-4E2F-A3E1-1DD107B3A3B9} = {676CFE58-271C-4F0C-9DB1-7D14F27244A7}
+		{5D7E5A85-F5EE-4749-8773-95D2667BDEA0} = {676CFE58-271C-4F0C-9DB1-7D14F27244A7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E525A445-8C1B-4F74-99AE-883798262B65}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-namespace Frontegg.SDK.Client.Extensions
+namespace Frontegg.SDK.AspNet.Owin.Extensions
 {
     internal static class StringExtensions
     {
